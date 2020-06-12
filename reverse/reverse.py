@@ -1,3 +1,4 @@
+from collections import deque
 class Node:
     def __init__(self, value=None, next_node=None):
         self.value = value
@@ -39,4 +40,16 @@ class LinkedList:
         return False
 
     def reverse_list(self, node, prev):
-        pass
+        if self.head != None:
+            current = self.head
+            reverse = deque()
+            while current.next_node != None:
+                reverse.append(current.value)
+                current = current.get_next() 
+            reverse.append(current.value)
+            for x in range(len(reverse)):
+                self.add_to_head(reverse.popleft())
+        else:
+            return None
+
+
